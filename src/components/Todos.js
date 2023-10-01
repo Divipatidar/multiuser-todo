@@ -33,6 +33,7 @@ function Todos(props) {
     <button className="myBtnDelete" onClick={() => props.onDelete(props.id)}>
       Delete
     </button>
+    
     <button
       className="myBtnDone"
       onClick={MarkAsDone}

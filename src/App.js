@@ -9,6 +9,9 @@ function App(props) {
   const usersRef = collection(db, "users");
   const user = doc(usersRef, props.id);
   const [TODO, setTODO] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editedTodo, setEditedTodo] = useState("");
+  const [todoToEdit, setTodoToEdit] = useState(null);
     
   useEffect(() => {
     getDoc(user).then((doc) => {
@@ -103,6 +106,32 @@ function App(props) {
       });
     });
   }
+  const handleEditClick = (todo) => {
+    setEditMode(true);
+    setEditedTodo(todo.content);
+    setTodoToEdit(todo);
+  };
+  const handleSaveEdit = async (todoId) => {
+    const updatedTodos = TODO.map((t) => {
+      if (t.id === todoToEdit.id) {
+        return { ...t, content: editedTodo };
+      }
+      return t;
+    });
+    try {
+    await updateDoc(user, {
+      todos: updatedTodos,
+    });
+    setTODO(updatedTodos.filter((t) => t.id !== todoId));
+    setEditedTodo("");
+    setEditMode(false);
+    setTodoToEdit(null);
+  } catch (error) {
+    console.error("Error updating database:", error);
+    // Handle the error, e.g., display an error message to the user
+  }
+  };
+  
 
   function signOut() {
     alert("You have been signed out !");
@@ -127,6 +156,22 @@ function App(props) {
 
     {TODO.map((t) => {
       return (
+        <div key={t.id}>
+        {editMode && t.id === todoToEdit?.id ? (
+          <div className="editinput">
+            <input
+              type="text"
+              value={editedTodo}
+              onChange={(e) => setEditedTodo(e.target.value)}
+            />
+            <button onClick={() => handleSaveEdit(t.id)}>Save</button>
+          </div>
+        ) : (
+          <div className="edit">
+          <button onClick={() => handleEditClick(t)}>Edit</button>
+          </div>
+        )}
+        {/* <button onClick={() => handleEditClick(t)}>Edit</button> */}
         <Todos
           key={t.id}
           id={t.id}
@@ -137,7 +182,10 @@ function App(props) {
           pending={t.pending}
           onDelete={DeleteTODO}
           onDone={checkHandler}
+          onEdit={handleEditClick}
+          onSave={ handleSaveEdit}
         />
+        </div>
       );
     })}
 

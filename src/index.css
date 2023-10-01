@@ -32,6 +32,52 @@ h1{
 .MainDiv {
   width: 55rem;
 }
+.edit button {
+  background-color: #091f37; 
+  color: #fff; 
+  padding: 5px 10px; 
+  border: none; 
+  cursor: pointer; 
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.edit button:hover {
+  background-color: #2b3a4b; 
+}
+
+/* CSS for the input field and "Save" button within the "editinput" div */
+.editinput {
+ /* Display children elements in a row */
+  align-items: center; /* Vertically center children elements */
+}
+
+.editinput input {
+  /* flex: 1; Expand the input field to fill available space */
+  padding: 5px 10px; /* Padding */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Add border radius */
+  color: black;
+  font-weight: bold;
+  background-color: #7e62a5;
+  margin-top: 10px;
+}
+
+.editinput button {
+  background-color:  #566f79; /* Background color */
+  color: #fff; /* Text color */
+  padding: 5px 10px; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add border radius */
+  margin-left: 10px; /* Add spacing between input and button */
+  cursor: pointer; /* Add cursor pointer on hover */
+  margin-top:10px;
+}
+
+/* Style the button on hover */
+.editinput button:hover {
+  background-color:#b156a5 ; /* Change background color on hover */
+}
+
 
 .noTodosLeft {
   font-size: 2rem;
@@ -186,6 +232,9 @@ a {
   border-radius: 10px;
   margin-left: 1rem;
   margin-top: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .signOut:hover{
