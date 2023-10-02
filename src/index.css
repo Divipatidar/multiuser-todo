@@ -45,17 +45,16 @@ h1{
   background-color: #2b3a4b; 
 }
 
-/* CSS for the input field and "Save" button within the "editinput" div */
+
 .editinput {
- /* Display children elements in a row */
-  align-items: center; /* Vertically center children elements */
+ align-items: center; 
 }
 
 .editinput input {
-  /* flex: 1; Expand the input field to fill available space */
-  padding: 5px 10px; /* Padding */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 10px; /* Add border radius */
+  
+  padding: 5px 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
   color: black;
   font-weight: bold;
   background-color: #7e62a5;
@@ -63,19 +62,18 @@ h1{
 }
 
 .editinput button {
-  background-color:  #566f79; /* Background color */
-  color: #fff; /* Text color */
-  padding: 5px 10px; /* Padding */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Add border radius */
-  margin-left: 10px; /* Add spacing between input and button */
-  cursor: pointer; /* Add cursor pointer on hover */
+  background-color:  #566f79; 
+  color: #fff; 
+  padding: 5px 10px; 
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px; 
+  cursor: pointer; 
   margin-top:10px;
 }
 
-/* Style the button on hover */
 .editinput button:hover {
-  background-color:#b156a5 ; /* Change background color on hover */
+  background-color:#b156a5 ;
 }
 
 
@@ -242,9 +240,29 @@ a {
   background-color: rgb(42, 6, 11);
 }
 
-@media only screen and (max-width: 1000px) {
+
+
+@media (max-width: 480px) {
   body {
-    background-color: black;
-    background-image: url("https://images.pexels.com/photos/2736499/pexels-photo-2736499.jpeg?cs=srgb&dl=pexels-content-pixie-2736499.jpg&fm=jpg");
+    background-size: cover;
+    background-color: white;
+    background-image: none;
   }
+
+  .MainDiv {
+    width: 90%; 
+    margin: 0 auto; 
+  }
+
+  .header {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .signOut {
+    margin-top: 1rem; 
+  }
+
+  
 }
+
